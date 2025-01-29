@@ -4,8 +4,16 @@ from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
+import os
+from dotenv import load_dotenv
+
+# ----------------------
+# Load Environment Variables
+# ----------------------
+load_dotenv()
+
 # Retrieve the API key from Streamlit secrets
-api_key = st.secrets['secrets']["API_KEY"]
+api_key = os.getenv("API_KEY")
 
 def get_llm_response(query, chat_history):
     template = """
